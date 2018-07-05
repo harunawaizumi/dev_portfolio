@@ -24,4 +24,5 @@ Things you may want to cover:
 * ...
 # dev_portfolio
  
-* hello from local
+
+* hello from local to others
