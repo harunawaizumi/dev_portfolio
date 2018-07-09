@@ -2,15 +2,12 @@
 
 <%= link_to "Create New Item", new_portfolio_url, subdomain: 'my_subdomain' %>
 
-<p>
-  <%= new_portfolio_url %>
-</p>
 
-<% @portfolio_items.inspect %>
 <% @portfolio_items.each do |portfolio_item| %>
   <p><%= portfolio_item.title %></p>
   <p><%= portfolio_item.subtitle %></p>
   <p><%= portfolio_item.body %></p>
   <p><%= image_tag portfolio_item.thumb_image unless portfolio_item.thumb_image.nil? %></p>
   <%= link_to "Edit", edit_portfolio_path(portfolio_item.id) %>
+  <a href="/portfolios/#{portfolio_item.id}/edit">Edit Two</a>
 <% end %>
