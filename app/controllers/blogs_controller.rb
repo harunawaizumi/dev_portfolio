@@ -39,7 +39,6 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
-    @blog = Blog.find(params[:id])
     respond_to do |format|
       if @blog.update(blog_params)
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
@@ -59,6 +58,16 @@ class BlogsController < ApplicationController
       format.html { redirect_to blogs_url, notice: 'Blog was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_status
+    if  @blog.draft?
+      @blog.published!
+    elsif  @blog.published?
+      @blog.draft!
+    end
+
+    redirect_to blogs_url, notice: 'Post status has been updated.'
   end
 
   private
